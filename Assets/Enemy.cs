@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    public static float HP = 50;
-    public static float Atk = 10;
+    public static float HP = 100;
+    public static float Atk = 1;
     public static float AtkSpeed = 7;
 
 
@@ -27,20 +27,24 @@ public class Enemy : MonoBehaviour
         if(collision.gameObject.tag == "Player")
         {
             colli = collision;
+            InvokeRepeating("fight", 1, AtkSpeed);
         }
     }
 
-
+    public float getHP()
+    { return HP; }
 
     
     public void fight()
     {
-        InvokeRepeating("minus", 1, Move.cd);
+        Atk = 10;
+        colli.gameObject.GetComponent<Hero>().Invoke("damage", 1);
+        //InvokeRepeating("minus", 1, Move.cd);
     }
     
-    void minus()
+    public void minus(float atk, int atkType)
     {
-        HP -= Move.ATK;
+        HP -= atk;
         Debug.Log("enemy health: " + HP.ToString());
         death();
     }
@@ -51,7 +55,8 @@ public class Enemy : MonoBehaviour
         {
             CancelInvoke();
             Destroy(gameObject);
-            colli.gameObject.GetComponent("Move").SendMessage("right");
+            //colli.gameObject.GetComponent<Hero>().Invoke("right",0.5f);
+            colli.gameObject.GetComponent<Hero>().CancelInvoke();
         }
         else if (Move.HP <= 0)
         {
