@@ -15,7 +15,7 @@ public class Tower : MonoBehaviour
 
     [Header("unity set up")]
     public string enemyTag = "Enemy";
-    public GameObject bulletPrefab;
+    public GameObject bulletPrefab;//子彈物件
     public Transform firepoint;//子彈生成點
 
     // Start is called before the first frame update
