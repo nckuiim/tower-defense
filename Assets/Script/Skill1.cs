@@ -2,12 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Skill2 : Skill
+public class Skill1 : Skill
 {
-    string Name = "skill2";
-    int atkType = 1;
-    float atk = 20;
-    float cd = 5;
+    private string Name = "skill1";
+    private int atkType = 1;
+    private float atk = 16;
+    private float cd = 3;
     public override float getAtk()
     {
         return atk;
@@ -27,5 +27,4 @@ public class Skill2 : Skill
     {
         return atkType;
     }
-
 }

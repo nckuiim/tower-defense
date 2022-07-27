@@ -14,6 +14,7 @@ TagManager:
   - rightTurn
   - upTurn
   - downTurn
+  - Hero
   layers:
   - Default
   - TransparentFX

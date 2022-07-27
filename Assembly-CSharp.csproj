@@ -56,12 +56,18 @@
     <Analyzer Include="C:\Program Files (x86)\Microsoft Visual Studio Tools for Unity\16.0\Analyzers\Microsoft.Unity.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Skill1.cs" />
-    <Compile Include="Assets\Hero.cs" />
-    <Compile Include="Assets\Enemy.cs" />
-    <Compile Include="Assets\Skill.cs" />
-    <Compile Include="Assets\Move.cs" />
-    <Compile Include="Assets\Skill2.cs" />
+    <Compile Include="Assets\Script\healthBar.cs" />
+    <Compile Include="Assets\Script\Skill1.cs" />
+    <Compile Include="Assets\Script\Hero.cs" />
+    <Compile Include="Assets\Script\Fighter.cs" />
+    <Compile Include="Assets\Script\Skill2.cs" />
+    <Compile Include="Assets\Script\createEnemy.cs" />
+    <Compile Include="Assets\Script\Enemy.cs" />
+    <Compile Include="Assets\Script\ControllableHero.cs" />
+    <Compile Include="Assets\Script\Skill.cs" />
+    <Compile Include="Assets\Script\EnemyV2.cs" />
+    <Compile Include="Assets\Script\AutomaticHero.cs" />
+    <Compile Include="Assets\Script\Turn.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
