@@ -780,16 +780,16 @@ MonoBehaviour:
   - {fileID: 1221996451}
   testEnemyPrefab: {fileID: 0}
   waves:
-  - enemyPrefab: {fileID: 7351916661682374643, guid: d2a67d5adadbc1946af3a35e5673d060, type: 3}
-    spawnInterval: 1
+  - enemyPrefab: {fileID: 7553750025515119308, guid: 15b66721aaf3f254396b11a87715495e, type: 3}
+    spawnInterval: 2.5
     maxEnemies: 5
-  - enemyPrefab: {fileID: 7351916661682374643, guid: d2a67d5adadbc1946af3a35e5673d060, type: 3}
+  - enemyPrefab: {fileID: 7553750025515119308, guid: 15b66721aaf3f254396b11a87715495e, type: 3}
     spawnInterval: 2
     maxEnemies: 10
-  - enemyPrefab: {fileID: 7351916661682374643, guid: d2a67d5adadbc1946af3a35e5673d060, type: 3}
+  - enemyPrefab: {fileID: 7553750025515119308, guid: 15b66721aaf3f254396b11a87715495e, type: 3}
     spawnInterval: 2
     maxEnemies: 15
-  - enemyPrefab: {fileID: 7351916661682374643, guid: d2a67d5adadbc1946af3a35e5673d060, type: 3}
+  - enemyPrefab: {fileID: 7553750025515119308, guid: 15b66721aaf3f254396b11a87715495e, type: 3}
     spawnInterval: 1
     maxEnemies: 5
   timeBetweenWaves: 5
