@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 7753381883949040686}
   - component: {fileID: 7753381883949040680}
   - component: {fileID: 7753381883949040681}
+  - component: {fileID: 4121751203081262970}
   m_Layer: 0
   m_Name: tower1
   m_TagString: Untagged
@@ -26,9 +27,9 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7753381883949040685}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -10.168228, y: -2.6056628, z: 0.018856693}
-  m_LocalScale: {x: 1.5336, y: 1.3669, z: 1}
+  m_LocalScale: {x: 1.2182918, y: 1.1829152, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -74,9 +75,9 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.73333335, g: 0.25201863, b: 0.24705882, a: 0.6}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -98,6 +99,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dbbd8de90e971f64691d6d9d75b4b379, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canAttack: 0
 --- !u!61 &7753381883949040681
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -124,3 +126,16 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &4121751203081262970
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7753381883949040685}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbbd8de90e971f64691d6d9d75b4b379, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canAttack: 0

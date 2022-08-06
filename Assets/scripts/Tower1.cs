@@ -5,11 +5,18 @@ using System;
 
 public class Tower1 : MonoBehaviour
 {
+    [SerializeField] public bool canAttack; //塔是否可攻擊
     private Vector2 offset; //計算滑鼠和物件距離差距
+    private bool enough; //金幣是否足夠建造塔
     TowerManager temp; //用來呼叫TowerManager function
     HoleManager temp2; //用來呼叫HoleManager function
+    coinCalculation temp3; //用來呼叫coinCalculation finction
     GameObject hole; //tower要放的hole位置
 
+    public void Start()
+    {
+        canAttack = false; //一開始的物件(塔的模板)不可攻擊
+    }
     Vector2 getMousePos() //get mouse position function
     {
         var mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -19,43 +26,52 @@ public class Tower1 : MonoBehaviour
     public void OnMouseDown() //點擊滑鼠時呼叫的function
     {
         temp2 = GameObject.Find("HoleManager").GetComponent<HoleManager>();
-        bool theSame = temp2.checkPos(transform.position);
+        temp3 = GameObject.Find("CoinNum").GetComponent<coinCalculation>();
+        bool theSame = temp2.checkPos(transform.position); 
+        int coin = temp3.getCoin(); //得到金幣數量
+        float opacity = gameObject.GetComponent<SpriteRenderer>().color.a; //得到點擊物件的透明度
 
         if (theSame) //若在同位置則do nothing
         {
         }
+        else if(opacity != 1) //若其為透明的將enough 設為 false
+        {
+            enough = false;
+        }
         else
         {
+            enough = true;  //若其為非透明將enough設為true
             offset = (Vector2)transform.position - getMousePos();
-
-            Color co = gameObject.GetComponent<SpriteRenderer>().color;//改變透明度
-            co.a = 0.5f;
-            gameObject.GetComponent<SpriteRenderer>().color = co;
 
             temp = GetComponentInParent<TowerManager>();
 
             string name = gameObject.name;
             switch (name)
             {
-                case "tower1":
-                    temp.spawnTower(1);
+                case "tower1Base":
+                    gameObject.name = "tower1"; //將模板和建置的塔取不同名字
+                    temp.spawnTower(1,coin); //將生成塔的種類及目前金幣數量傳入
                     break;
-                case "tower2":
-                    temp.spawnTower(2);
+                case "tower2Base":
+                    gameObject.name = "tower2";
+                    temp.spawnTower(2,coin);
                     break;
-                case "tower3":
-                    temp.spawnTower(3);
+                case "tower3Base":
+                    gameObject.name = "tower3";
+                    temp.spawnTower(3,coin);
                     break;
-                case "tower4":
-                    temp.spawnTower(4);
-                    break;
-                case "tower5":
-                    temp.spawnTower(5);
+                case "tower4Base":
+                    gameObject.name = "tower4";
+                    temp.spawnTower(4,coin);
                     break;
                 default:
                     Debug.Log("tower not exist");
                     break;
             }
+
+            Color co = gameObject.GetComponent<SpriteRenderer>().color;//抓取過程使其變透明
+            co.a = 0.5f;
+            gameObject.GetComponent<SpriteRenderer>().color = co;
         }
     }
 
@@ -63,7 +79,11 @@ public class Tower1 : MonoBehaviour
     {
         temp2 = GameObject.Find("HoleManager").GetComponent<HoleManager>();
         bool theSame = temp2.checkPos(transform.position);
+
         if (theSame) //若在同位置則do nothing
+        {
+        }
+        else if (!enough) //若金幣不足則do nothing
         {
         }
         else
@@ -75,8 +95,14 @@ public class Tower1 : MonoBehaviour
     public void OnMouseUp() //滑鼠放開時呼叫的function
     {
         temp2 = GameObject.Find("HoleManager").GetComponent<HoleManager>();
+        temp3 = GameObject.Find("CoinNum").GetComponent<coinCalculation>();
         bool theSame = temp2.checkPos(transform.position);
+        int coin = temp3.getCoin();
+
         if (theSame) //若在同位置則do nothing
+        {
+        }
+        else if (!enough) //若金幣不足則do nothing
         {
         }
         else
@@ -99,9 +125,37 @@ public class Tower1 : MonoBehaviour
                 Color co = gameObject.GetComponent<SpriteRenderer>().color;//放置完成後將透明度調回正常
                 co.a = 1f;
                 gameObject.GetComponent<SpriteRenderer>().color = co;
+
+                coin = modifyCoin(gameObject.name, coin);
+                temp3.setCoin(coin);
+                canAttack = true;
             }
         }
-       
+
+    }
+
+    public int modifyCoin(string towerName , int currentCoin)
+    {
+        switch (towerName)
+        {
+            case "tower1":
+                currentCoin -= 25;
+                break;
+            case "tower2":
+                currentCoin -= 75;
+                break;
+            case "tower3":
+                currentCoin -= 150;
+                break;
+            case "tower4":
+                currentCoin -= 250;
+                break;
+            default:
+                Debug.Log("tower not exist");
+                break;
+        }
+
+        return currentCoin;
     }
 
 }
