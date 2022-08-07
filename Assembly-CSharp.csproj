@@ -56,11 +56,61 @@
     <Analyzer Include="C:\Program Files (x86)\Microsoft Visual Studio Tools for Unity\16.0\Analyzers\Microsoft.Unity.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\NewBehaviourScript.cs" />
-    <Compile Include="Assets\Hero.cs" />
-    <Compile Include="Assets\Enemy.cs" />
-    <Compile Include="Assets\Skill.cs" />
-    <Compile Include="Assets\Move.cs" />
+    <Compile Include="Assets\Script\Skills\Bullet2.cs" />
+    <Compile Include="Assets\Script\Skills\Tower2.cs" />
+    <Compile Include="Assets\Script\Hero&amp;Enemy\HealthBar.cs" />
+    <Compile Include="Assets\Script\Hero&amp;Enemy\HeroBorn.cs" />
+    <Compile Include="Assets\Script\Hero&amp;Enemy\drag.cs" />
+    <Compile Include="Assets\Script\Skills\Scoreboard.cs" />
+    <Compile Include="Assets\Script\Hero&amp;Enemy\SpawnHero.cs" />
+    <Compile Include="Assets\Script\Hero&amp;Enemy\GameManagerBehavior.cs" />
+    <Compile Include="Assets\Script\DefendTower\Bullet.cs" />
+    <Compile Include="Assets\Script\Hero&amp;Enemy\Skill1.cs" />
+    <Compile Include="Assets\Script\Hero&amp;Enemy\MoveEnemy.cs" />
+    <Compile Include="Assets\Script\DefendTower\Tower.cs" />
+    <Compile Include="Assets\Script\Skills\Bullet3.cs" />
+    <Compile Include="Assets\Script\Skills\Drag.cs" />
+    <Compile Include="Assets\Script\Skills\RemainEnemy.cs" />
+    <Compile Include="Assets\Script\Hero&amp;Enemy\HeroFight.cs" />
+    <Compile Include="Assets\Script\Hero&amp;Enemy\SpawnEnemy.cs" />
+    <Compile Include="Assets\Script\Map\MouseDrag.cs" />
+    <Compile Include="Assets\Script\Skills\Tower3.cs" />
+    <Compile Include="Assets\Script\Hero&amp;Enemy\FighterStruct.cs" />
+    <Compile Include="Assets\Script\Skills\Drag2.cs" />
+    <Compile Include="Assets\Script\Hero&amp;Enemy\Skill2.cs" />
+    <Compile Include="Assets\Script\Map\Hole.cs" />
+    <Compile Include="Assets\Script\Hero&amp;Enemy\createEnemy.cs" />
+    <Compile Include="Assets\Script\Map\HoleManager.cs" />
+    <Compile Include="Assets\Script\Hero&amp;Enemy\EnemyFight.cs" />
+    <Compile Include="Assets\bugs.cs" />
+    <Compile Include="Assets\Script\Hero&amp;Enemy\Skill.cs" />
+    <Compile Include="Assets\Script\Hero&amp;Enemy\Hero.cs" />
+    <Compile Include="Assets\Script\Hero&amp;Enemy\Enemy.cs" />
+    <Compile Include="Assets\Script\Map\TowerManager.cs" />
+    <Compile Include="Assets\Script\Skills\ItemSlot.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap.shader" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMPro_Mobile.cginc" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF SSD.shader" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Surface-Mobile.shader" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Surface.shader" />
+    <None Include="Assets\TextMesh Pro\Sprites\EmojiOne Attribution.txt" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap-Custom-Atlas.shader" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF.shader" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile SSD.shader" />
+    <None Include="Assets\TextMesh Pro\Resources\LineBreaking Leading Characters.txt" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMPro_Properties.cginc" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMPro_Surface.cginc" />
+    <None Include="Assets\TextMesh Pro\Resources\LineBreaking Following Characters.txt" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Masking.shader" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF Overlay.shader" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap-Mobile.shader" />
+    <None Include="Assets\TextMesh Pro\Fonts\LiberationSans - OFL.txt" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile.shader" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMP_Sprite.shader" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

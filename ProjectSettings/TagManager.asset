@@ -4,16 +4,16 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - leftWall
-  - rightWall
-  - upWall
-  - downWall
-  - enemy
   - exit
   - leftTurn
   - rightTurn
   - upTurn
   - downTurn
+  - Hero
+  - Bullet
+  - Enemy
+  - Tower
+  - GameWon
   layers:
   - Default
   - TransparentFX
