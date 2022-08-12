@@ -5,6 +5,8 @@ using UnityEngine;
 public class TowerManager : MonoBehaviour
 {
     [SerializeField] GameObject[] TowerType; //存放各種類的tower 的game object array
+    [SerializeField] bool[] ClickTower; //**存放塔是否被點擊的bool array
+    [SerializeField] public GameObject[] holeTower; //紀錄hole上的tower
     GameObject tower; //紀錄生成的tower
     Vector3[] Pos = new Vector3[15]; //紀錄最底下那排tower的位置的座標array
 
@@ -12,7 +14,7 @@ public class TowerManager : MonoBehaviour
     {
         for (int i = 0; i < TowerType.Length; i++)
         {
-            Pos[i] = TowerType[i].transform.position;
+            Pos[i] = TowerType[i].transform.position; 
         }
     }
 

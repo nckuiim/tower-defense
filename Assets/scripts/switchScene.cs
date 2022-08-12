@@ -14,6 +14,15 @@ public class switchScene : MonoBehaviour
                 SceneManager.LoadScene("level 1");
                 Cursor.SetCursor(null, Vector2.zero, CursorMode.ForceSoftware);
                 break;
+            case "level 2":
+                SceneManager.LoadScene("level 2");
+                Cursor.SetCursor(null, Vector2.zero, CursorMode.ForceSoftware);
+                break;
+            case "back":
+                SceneManager.LoadScene("chooseScene");
+                Cursor.SetCursor(null, Vector2.zero, CursorMode.ForceSoftware);
+                break;
+
             default:
                 Debug.Log("scene not exist");
                 break;

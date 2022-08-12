@@ -48,6 +48,10 @@ public class HoleManager : MonoBehaviour
             {
                 hasTower[index] = true; //將hole設為有放置tower
                 placeHole = holeNum[index]; //找出該hole的gmae object
+                //Color holeColor = placeHole.GetComponent<SpriteRenderer>().color;
+               // holeColor.a = 0.4f;
+
+
                 return true;
             }
             else //若該位置有放置tower，return false
@@ -75,4 +79,6 @@ public class HoleManager : MonoBehaviour
 
         return false;
     }
+
+    
 }

@@ -10,7 +10,7 @@ public class Tower1 : MonoBehaviour
     private bool enough; //金幣是否足夠建造塔
     TowerManager temp; //用來呼叫TowerManager function
     HoleManager temp2; //用來呼叫HoleManager function
-    coinCalculation temp3; //用來呼叫coinCalculation finction
+    coinCalculation temp3; //用來呼叫coinCalculation function
     GameObject hole; //tower要放的hole位置
 
     public void Start()
@@ -129,6 +129,9 @@ public class Tower1 : MonoBehaviour
                 coin = modifyCoin(gameObject.name, coin);
                 temp3.setCoin(coin);
                 canAttack = true;
+                //record tower on hole
+                
+
             }
         }
 
@@ -157,5 +160,21 @@ public class Tower1 : MonoBehaviour
 
         return currentCoin;
     }
+    public void delete()
+    {
+        temp2 = GameObject.Find("HoleManager").GetComponent<HoleManager>();
+        temp3 = GameObject.Find("CoinNum").GetComponent<coinCalculation>();
+        bool theSame = temp2.checkPos(transform.position);
+        int coin = temp3.getCoin(); //得到金幣數量
+        float opacity = gameObject.GetComponent<SpriteRenderer>().color.a; //得到點擊物件的透明度
 
+        if (theSame) //若在同位置則do nothing
+        {
+            Destroy(gameObject);
+
+        }
+     
+        
+
+    }
 }
