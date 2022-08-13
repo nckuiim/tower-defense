@@ -8,7 +8,7 @@ public class RemainEnemy : MonoBehaviour
 {
 
     public TextMeshProUGUI ShowRemaining;
-    public static int en = 25;
+    public static int en = 6;
     // Start is called before the first frame update
     void Start()
     {

@@ -21,9 +21,9 @@ public class MoveEnemy : MonoBehaviour
     public GameObject[] waypoints;
     private int currentWaypoint = 0;
     private float lastWaypointSwitchTime;
-    public float maxSpeed;
+    public float maxSpeed = 1.0f;
     public float speed = 1.0f;
-    bool move = true;
+    private bool move = true;
     // Start is called before the first frame update
     void Start()
     {
@@ -31,7 +31,6 @@ public class MoveEnemy : MonoBehaviour
     }
     float startfight = 0;
     float endfight = 0;
-    string colli;
     // Update is called once per frame
     void Update()
     {
@@ -61,7 +60,7 @@ public class MoveEnemy : MonoBehaviour
                 {
                     // 3.b 
                     Destroy(gameObject);
-
+                    RemainEnemy.en--;
                     //AudioSource audioSource = gameObject.GetComponent<AudioSource>();
                     //AudioSource.PlayClipAtPoint(audioSource.clip, transform.position);
                     // TODO: deduct health
@@ -74,36 +73,9 @@ public class MoveEnemy : MonoBehaviour
 
             RotateIntoMoveDirection();
         }
-        else
-        {
-            if (GameObject.Find(colli) == null)
-            {
-                endfight += Time.time;
-                move = true;
-            }
-        }
     }
 
-    bool isDestroyed;
-    bool isFight;
 
-    private void OnCollisionExit(Collision collision)
-    {
-
-        //colli = "None";
-        if (collision.gameObject.tag == "Hero")
-        {
-            Debug.Log("hit");
-
-            if (isFight)
-            {
-                endfight += Time.time;
-                move = true;
-            }
-        }
-
-
-    }
 
     private void RotateIntoMoveDirection()
     {
@@ -120,29 +92,15 @@ public class MoveEnemy : MonoBehaviour
         sprite.transform.rotation = Quaternion.AngleAxis(rotationAngle, Vector3.forward);
     }
 
-
-    private void OnCollisionEnter(Collision collision)
+    public void stopFighter()
     {
-        if (collision.gameObject.tag == "Hero" && tag == "Enemy")
-        {
-            colli = collision.gameObject.name;
-            isFight = collision.gameObject.GetComponent<HeroFight>().callFight();
-            if (isFight)
-            {
-                startfight += Time.time;
-                move = false;
-            }
-
-        }
-        else if(collision.gameObject.tag == "Enemy" && tag == "Hero")
-        {
-            if(move == true)
-            {
-                colli = collision.gameObject.name;
-                startfight += Time.time;
-                move = false;
-            }
-        }
+        move = false;
+        startfight += Time.time;
     }
 
+    public void moveFighter()
+    {
+        move = true;
+        endfight += Time.time;
+    }
 }

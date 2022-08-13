@@ -64,6 +64,7 @@
     <Compile Include="Assets\Script\Skills\Scoreboard.cs" />
     <Compile Include="Assets\Script\Hero&amp;Enemy\SpawnHero.cs" />
     <Compile Include="Assets\Script\Hero&amp;Enemy\GameManagerBehavior.cs" />
+    <Compile Include="Assets\atk1.cs" />
     <Compile Include="Assets\Script\DefendTower\Bullet.cs" />
     <Compile Include="Assets\Script\Hero&amp;Enemy\Skill1.cs" />
     <Compile Include="Assets\Script\Hero&amp;Enemy\MoveEnemy.cs" />
@@ -71,6 +72,7 @@
     <Compile Include="Assets\Script\Skills\Bullet3.cs" />
     <Compile Include="Assets\Script\Skills\Drag.cs" />
     <Compile Include="Assets\Script\Skills\RemainEnemy.cs" />
+    <Compile Include="Assets\atk2.cs" />
     <Compile Include="Assets\Script\Hero&amp;Enemy\HeroFight.cs" />
     <Compile Include="Assets\Script\Hero&amp;Enemy\SpawnEnemy.cs" />
     <Compile Include="Assets\Script\Map\MouseDrag.cs" />

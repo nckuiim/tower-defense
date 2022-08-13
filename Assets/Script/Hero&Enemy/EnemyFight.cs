@@ -15,7 +15,7 @@ public abstract class EnemyFight : FighterStruct
     { }
 
     //存取碰撞的物件
-    private void OnCollisionEnter(Collision collision)
+    /*private void OnCollisionEnter(Collision collision)
     {
         //遇到英雄
         if (collision.gameObject.tag == "Hero")
@@ -23,7 +23,7 @@ public abstract class EnemyFight : FighterStruct
             //存取英雄名字
             colli = collision.gameObject.name;
             //若該英雄不在戰鬥狀態
-            if (!GameObject.Find(colli).GetComponent<HeroFight>().callFight())
+            if (GameObject.Find(colli).GetComponent<HeroFight>().callFight(name))
             {
                 //攻擊
                 InvokeRepeating("useSkill1", 1, skills[0].getCD());
@@ -35,9 +35,16 @@ public abstract class EnemyFight : FighterStruct
         {
             damage(collision.gameObject);
         }
+    }*/
+
+    public void fight(string obj)
+    {
+        colli = obj;
+        InvokeRepeating("useSkill1", 1, skills[0].getCD());
+        InvokeRepeating("useSkill2", 2, skills[1].getCD());
     }
 
-    private void OnCollisionExit(Collision collision)
+    /*private void OnCollisionExit(Collision collision)
     {
         //若英雄中途離開，解除雙方戰鬥狀態
         if (collision.gameObject == GameObject.Find(colli))
@@ -45,17 +52,17 @@ public abstract class EnemyFight : FighterStruct
             collision.gameObject.GetComponent<HeroFight>().CancelInvoke();
             Reset();
         }
-    }
+    }*/
 
     void useSkill1()
     {
         //判斷敵人是否死亡
-        if (GameObject.Find(colli) == null)
+        /*if (GameObject.Find(colli) == null)
         {
             //取消戰鬥狀態
             Reset();
             return;
-        }
+        }*/
         //呼叫敵人的受傷函式
         //Debug.Log("use skill 1!");
         ATK = skills[0].getAtk();
@@ -65,12 +72,12 @@ public abstract class EnemyFight : FighterStruct
     void useSkill2()
     {
         //判斷敵人是否死亡
-        if (GameObject.Find(colli) == null)
+        /*if (GameObject.Find(colli) == null)
         {
             //取消戰鬥狀態
             Reset();
             return;
-        }
+        }*/
         //呼叫敵人的受傷函式
         //Debug.Log("use skill 2!");
         ATK = skills[1].getAtk();
@@ -85,6 +92,8 @@ public abstract class EnemyFight : FighterStruct
             Debug.Log("enemy health: " + HP.ToString());
             if (HP <= 0)
             {
+                Scoreboard.sc += 200;
+                RemainEnemy.en--;
                 Destroy(gameObject);
                 CancelInvoke();
                 hurt.GetComponent<HeroFight>().CancelInvoke();
@@ -96,6 +105,8 @@ public abstract class EnemyFight : FighterStruct
             Debug.Log("enemy health: " + HP.ToString());
             if (HP <= 0)
             {
+                Scoreboard.sc += 200;
+                RemainEnemy.en--;
                 Destroy(gameObject);
                 CancelInvoke();
                 if(GameObject.Find(colli) != null)

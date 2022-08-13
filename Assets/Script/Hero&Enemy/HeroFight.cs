@@ -10,27 +10,32 @@ public class HeroFight : FighterStruct
     void Start() {}
 
     void Update() 
-    {
-        //更新戰鬥狀態
-        if(!gameObject.GetComponent<HeroFight>().IsInvoking())
-        {
-            isFight = false;
-        }
-    }
+    {}
+
+    public bool skill1act = true;
+    public bool skill2act = false;
 
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.tag == "Enemy")
         {
-            //判斷是否已經進入戰鬥狀態(避免英雄1打多)
-            if (!gameObject.GetComponent<HeroFight>().IsInvoking())
+            //判斷是否已經有戰鬥對象(避免英雄1打多)
+            if (colli == "None")
             {
+                //英雄敵人停止移動
+                collision.gameObject.GetComponent<MoveEnemy>().stopFighter();
+                if (GetComponent<MoveEnemy>() != null)
+                {
+                    GetComponent<MoveEnemy>().stopFighter();
+                }
                 myAnimator.SetInteger("Status", 0);
                 //存取敵人物件名字
                 colli = collision.gameObject.name;
+                collision.gameObject.GetComponent<EnemyFight>().fight(name);
                 //使用技能
                 InvokeRepeating("useSkill1", 1, skills[0].getCD());
-                InvokeRepeating("useSkill2", 1, skills[1].getCD());
+                InvokeRepeating("useSkill2", 2, skills[1].getCD());
+
             }
         }
     }
@@ -38,9 +43,14 @@ public class HeroFight : FighterStruct
     private void OnCollisionExit(Collision collision)
     {
         //若英雄中途離開，解除雙方戰鬥狀態
-        if (collision.gameObject == GameObject.Find(colli))
+        if (collision.gameObject.name == colli)
         {
             collision.gameObject.GetComponent<EnemyFight>().CancelInvoke();
+            collision.gameObject.GetComponent<MoveEnemy>().moveFighter();
+            if (GetComponent<MoveEnemy>() != null)
+            {
+                GetComponent<MoveEnemy>().moveFighter();
+            }
             Reset();
         }
     }
@@ -49,32 +59,35 @@ public class HeroFight : FighterStruct
     {
         CancelInvoke();
         colli = "None";
-        isFight = false;
     }
 
     void useSkill1()
     {
+        myAnimator.SetBool("skill1", true);
         //判斷敵人是否死亡後，呼叫敵人的受傷函式
         if (GameObject.Find(colli) == null)
         {
             Reset();
             return;
         }
-        //Debug.Log("use skill 1!");
+        Debug.Log("use skill 1!");
         ATK = skills[0].getAtk();
         GameObject.Find(colli).GetComponent<EnemyFight>().damage(gameObject);
+        //myAnimator.SetBool("skill1", false);
     }
 
     void useSkill2()
     {
+        myAnimator.SetBool("skill2", true);
         if (GameObject.Find(colli) == null)
         {
             Reset();
             return;
         }
-        //Debug.Log("use skill 2!");
+        Debug.Log("use skill 2!");
         ATK = skills[1].getAtk();
         GameObject.Find(colli).GetComponent<EnemyFight>().damage(gameObject);
+        //myAnimator.SetBool("skill1", false);
     }
 
     public void damage()
@@ -88,18 +101,16 @@ public class HeroFight : FighterStruct
                 Destroy(gameObject);
                 CancelInvoke();
                 GameObject.Find(colli).GetComponent<EnemyFight>().CancelInvoke();
+                GameObject.Find(colli).GetComponent<MoveEnemy>().moveFighter();
             }
         }
 
     }
 
-    private bool isFight = false;
-
-    public bool callFight()
+    public bool callFight(string obj)
     {
-        if (!isFight)
+        if (obj == colli)
         {
-            isFight = true;
             return true;
         }
         return false;

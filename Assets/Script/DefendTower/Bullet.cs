@@ -107,6 +107,7 @@ public class Bullet : MonoBehaviour
         
         if(target_enemy.getHP() <= 0)
         {
+            Scoreboard.sc += 200;
             Destroy(Enemy.gameObject);
             return;
         }

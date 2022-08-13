@@ -421,6 +421,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   waypoints: []
+  maxSpeed: 0
   speed: 10
 --- !u!114 &7191655859908911916
 MonoBehaviour:

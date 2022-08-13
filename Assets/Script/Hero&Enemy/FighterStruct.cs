@@ -18,7 +18,7 @@ public abstract class FighterStruct : MonoBehaviour
     protected Animator myAnimator;
     protected SpriteRenderer mySpriteRenderer;
 
-    protected string colli;
+    protected string colli = "None";
 
     //Â÷¶}¾Ô°«ª¬ºA
     protected void Reset()
