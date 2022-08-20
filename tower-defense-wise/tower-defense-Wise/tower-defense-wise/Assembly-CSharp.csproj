@@ -59,9 +59,7 @@
     <Compile Include="Assets\HeroBorn.cs" />
     <Compile Include="Assets\GameManagerBehavior.cs" />
     <Compile Include="Assets\MoveEnemy.cs" />
-    <Compile Include="Assets\CureHealthBar.cs" />
     <Compile Include="Assets\SpawnEnemy.cs" />
-    <Compile Include="Assets\SpeedUpHealthBar.cs" />
     <Compile Include="Assets\HealthBar.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -21,5 +21,6 @@ public class HealthBar : MonoBehaviour
         Vector3 tmpScale = gameObject.transform.localScale;
         tmpScale.x = currentHealth / maxHealth * originalScale;
         gameObject.transform.localScale = tmpScale;
+
     }
 }

@@ -94,7 +94,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1221852990326248962}
   - component: {fileID: 2380554449623869002}
-  - component: {fileID: 7866842059917637860}
   m_Layer: 0
   m_Name: HealthBar
   m_TagString: Untagged
@@ -169,20 +168,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &7866842059917637860
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4664094163342453608}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ebf4ba7c1072f114e87ee4b1eddf7679, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxHealth: 100
-  currentHealth: 100
 --- !u!1 &5544774549297678530
 GameObject:
   m_ObjectHideFlags: 0
@@ -281,7 +266,7 @@ GameObject:
   - component: {fileID: 8072018964163659357}
   m_Layer: 0
   m_Name: artic_fox_enemy
-  m_TagString: Enemy
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -317,7 +302,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   waypoints: []
-  speed: 1
+  speed: 10
 --- !u!61 &2721438252721339697
 BoxCollider2D:
   m_ObjectHideFlags: 0
