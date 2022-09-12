@@ -4,8 +4,6 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-//«Â§Ê
-
 public class Scoreboard : MonoBehaviour
 {
 

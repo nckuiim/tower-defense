@@ -96,15 +96,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 5402099897992321354}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e566167f3121ca641954319cb8e70a59, type: 3}
+  m_Script: {fileID: 11500000, guid: b2097085e5bc43046908f357a5ce0ff6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  range: 4
-  fireRate: 1
+  canAttack: 0
+  range: 0
+  fireRate: 0
+  rotate: 0
   enemyTag: Enemy
   bulletPrefab: {fileID: 4203034308062273380, guid: 96860dcaf8a7463409d25e8f6da174b6, type: 3}
   firepoint: {fileID: 8313346530377271511}
-  num: 1
+  num: 0
 --- !u!61 &-6302568588872874646
 BoxCollider2D:
   m_ObjectHideFlags: 0

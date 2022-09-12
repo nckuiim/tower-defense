@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 6545514408668537884}
   m_Layer: 0
   m_Name: Bullet 2
-  m_TagString: Untagged
+  m_TagString: Bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -73,7 +73,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_FlipX: 0
@@ -100,3 +100,7 @@ MonoBehaviour:
   speed: 30
   impactEffect: {fileID: 1051908215245933160, guid: 1a982c3f2d00bed4b897e4dc07b08daa, type: 3}
   Hurt: 0
+  enemyType: 
+  explosionRadius: 0
+  slowBullet: 0
+  slowRate: 0

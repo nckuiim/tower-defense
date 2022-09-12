@@ -2,59 +2,28 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-//秉新
-
-
-public class Bullet : MonoBehaviour
+public class Bullet : BulletStruct
 {
-
-    private Transform target;//欲射擊的目標位置
-    private GameObject targetEnemy;
-    private EnemyFight target_enemy;
-
-    public float speed = 70f;//子彈速度
-    public GameObject impactEffect;//子彈擊中後的特效
-    public float Hurt=10f;//子彈傷害
-    public string enemyType = "type1";//敵人種類
-    public float explosionRadius = 0f;//爆炸半徑
-    public bool slowBullet = false;//是否為緩速塔
-    public float slowRate = 0.5f;//緩速率
-
-
+    private void Start()
+    {
+        speed = 70f;//子彈速度
+        Hurt = 10f;//子彈傷害
+        enemyType = "type1";//敵人種類
+        explosionRadius = 0f;//爆炸半徑
+        slowBullet = false;//是否為緩速塔
+        slowRate = 0.5f;//緩速率
+    }
 
     void Update()
     {
-        if(target == null)
-        {
-            Destroy(gameObject);
-            return;
-        }//若敵人死亡則子彈自動消失
-
-        Vector3 dir = target.position - transform.position;//子彈到目標的距離
-        float distanceThisFrame = speed * Time.deltaTime;//子彈走的距離
-
-        if (dir.magnitude <= distanceThisFrame)
-        {
-            HitTarget();
-            return;
-        }//當子彈走的距離大於子彈到目標的距離代表擊中目標
-
-        transform.Translate(dir.normalized * distanceThisFrame, Space.World);//讓子彈飛的軌跡正常
-    
-
+        bulletMove();
     }
 
-    public void seek(Transform _target)
-    {
-        target = _target;
-       
-    }
-
-    void HitTarget()
+    public override void HitTarget()
     {
 
-        GameObject effectIns=(GameObject)Instantiate(impactEffect, transform.position, transform.rotation);//擊中目標後產生特效
-        Destroy(effectIns, 2f);//特效於2秒後消失
+        //GameObject effectIns=(GameObject)Instantiate(impactEffect, transform.position, transform.rotation);//擊中目標後產生特效
+        //Destroy(effectIns, 2f);//特效於2秒後消失
 
         if(explosionRadius> 0f)
         {
@@ -76,11 +45,11 @@ public class Bullet : MonoBehaviour
 
     void Damage(Transform Enemy)
     {
-        if (Enemy != null)
+        /*if (Enemy != null)
         {
             targetEnemy = Enemy.gameObject;
             target_enemy = targetEnemy.GetComponent<EnemyFight>();
-        }
+        }*/
 
         if(explosionRadius == 0f)
         {
@@ -99,7 +68,8 @@ public class Bullet : MonoBehaviour
         {
             Hurt = 10f;
         }
-        if (target_enemy != null)
+        damageCalculation();
+        /*if (target_enemy != null)
         {
             target_enemy.GetComponent<EnemyFight>().damage(gameObject);//敵人扣血
         }
@@ -110,7 +80,7 @@ public class Bullet : MonoBehaviour
             Scoreboard.sc += 200;
             Destroy(Enemy.gameObject);
             return;
-        }
+        }*/
     }
 
     void Explode()

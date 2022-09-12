@@ -8,7 +8,7 @@ using UnityEngine;
 public class HealthBar : MonoBehaviour
 {
     private float maxHealth;
-    private float currentHealth;
+    public float currentHealth;
     private float originalScale;
     public GameObject master;
     // Use this for initialization
@@ -26,4 +26,5 @@ public class HealthBar : MonoBehaviour
         tmpScale.x = currentHealth / maxHealth * originalScale;
         gameObject.transform.localScale = tmpScale;
     }
+
 }

@@ -19,5 +19,8 @@ public class Enemy : EnemyFight
         skills = new Skill[2];
         skills[0] = new Skill1();
         skills[1] = new Skill2();
+        myAnimator = gameObject.transform.Find("Sprite").GetComponent<Animator>();
+        mySpriteRenderer = gameObject.transform.Find("Sprite").GetComponent<SpriteRenderer>();
+        myAnimator.SetInteger("Status", status);
     }
 }

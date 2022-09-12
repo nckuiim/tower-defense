@@ -12,10 +12,7 @@ public class HeroFight : FighterStruct
     void Update() 
     {}
 
-    public bool skill1act = true;
-    public bool skill2act = false;
-
-    private void OnCollisionEnter(Collision collision)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "Enemy")
         {
@@ -34,31 +31,32 @@ public class HeroFight : FighterStruct
                 collision.gameObject.GetComponent<EnemyFight>().fight(name);
                 //使用技能
                 InvokeRepeating("useSkill1", 1, skills[0].getCD());
-                InvokeRepeating("useSkill2", 2, skills[1].getCD());
+                //InvokeRepeating("useSkill2", 2, skills[1].getCD());
 
             }
         }
     }
 
-    private void OnCollisionExit(Collision collision)
+    private void OnCollisionExit2D(Collision2D collision)
     {
         //若英雄中途離開，解除雙方戰鬥狀態
         if (collision.gameObject.name == colli)
         {
             collision.gameObject.GetComponent<EnemyFight>().CancelInvoke();
             collision.gameObject.GetComponent<MoveEnemy>().moveFighter();
-            if (GetComponent<MoveEnemy>() != null)
-            {
-                GetComponent<MoveEnemy>().moveFighter();
-            }
             Reset();
         }
     }
 
-    private new void Reset()
+    public new void Reset()
     {
+        myAnimator.SetInteger("Status", 1);
         CancelInvoke();
         colli = "None";
+        if (GetComponent<MoveEnemy>() != null)
+        {
+            GetComponent<MoveEnemy>().moveFighter();
+        }
     }
 
     void useSkill1()
@@ -76,7 +74,7 @@ public class HeroFight : FighterStruct
         //myAnimator.SetBool("skill1", false);
     }
 
-    void useSkill2()
+    /*void useSkill2()
     {
         myAnimator.SetBool("skill2", true);
         if (GameObject.Find(colli) == null)
@@ -88,7 +86,7 @@ public class HeroFight : FighterStruct
         ATK = skills[1].getAtk();
         GameObject.Find(colli).GetComponent<EnemyFight>().damage(gameObject);
         //myAnimator.SetBool("skill1", false);
-    }
+    }*/
 
     public void damage()
     {

@@ -6,7 +6,10 @@ using UnityEngine;
 
 public class SpawnEnemy : MonoBehaviour
 {
-    public GameObject[] waypoints;
+    public GameObject[] waypoints1;
+    public GameObject[] waypoints2;
+    public GameObject[] waypoints3;
+    public GameObject[] waypoints4;
     public GameObject testEnemyPrefab;
     public Wave[] waves;
     public int timeBetweenWaves = 5;
@@ -43,7 +46,27 @@ public class SpawnEnemy : MonoBehaviour
                 lastSpawnTime = Time.time;
                 GameObject newEnemy = (GameObject)
                     Instantiate(waves[currentWave].enemyPrefab);
-                newEnemy.GetComponent<MoveEnemy>().waypoints = waypoints;
+
+                System.Random rnd = new System.Random();
+                int wayNum = rnd.Next(1, 5);
+                switch (wayNum)
+                {
+                    case 1:
+                        newEnemy.GetComponent<MoveEnemy>().waypoints = waypoints1;
+                        break;
+                    case 2:
+                        newEnemy.GetComponent<MoveEnemy>().waypoints = waypoints2;
+                        break;
+                    case 3:
+                        newEnemy.GetComponent<MoveEnemy>().waypoints = waypoints3;
+                        break;
+                    case 4:
+                        newEnemy.GetComponent<MoveEnemy>().waypoints = waypoints4;
+                        break;
+                    default:
+                        Debug.Log("error");
+                        break;
+                }
                 newEnemy.name = newEnemy.name + enemiesSpawned;
                 enemiesSpawned++;
             }

@@ -2,11 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-//Ä£¤å
-
 public class Drag : MonoBehaviour
 {
-    private bool isDragging;
+    public bool isDragging;
     public bool isMoved = false;
     public float x;
     public float y;
@@ -35,11 +33,9 @@ public class Drag : MonoBehaviour
                 {
                     transform.position = new Vector2(i, j);
                     isMoved = true;
-                    Debug.Log("bbb");
                 }
                 else if (isDragging == false && (transform.position.x >= 6.5f || transform.position.x <= -6.5f) || (transform.position.y >= 3.5f || transform.position.y <= -2.5f) && transform.position.x != -6 && transform.position.y != -4)
                 {
-                    Debug.Log("aaa");
                     transform.position = new Vector2(x, y);
                 }
             }

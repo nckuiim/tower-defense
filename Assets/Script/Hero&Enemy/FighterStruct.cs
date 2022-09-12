@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 //詠吏
@@ -7,6 +8,8 @@ using UnityEngine;
 //英雄與敵人的共通架構
 public abstract class FighterStruct : MonoBehaviour
 {
+    [SerializeField] protected TextMeshProUGUI HPTextS;
+    public string title;
     protected float maxHP;
     protected float HP;
     protected float oriAtk;
@@ -25,6 +28,11 @@ public abstract class FighterStruct : MonoBehaviour
     {
         CancelInvoke();
         colli = "None";
+    }
+
+    public void HPChangeS()
+    {
+        HPTextS.text = HP.ToString();
     }
 
     public float getHP() { return HP; }

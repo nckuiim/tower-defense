@@ -98,7 +98,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 70
-  impactEffect: {fileID: -3023108075528616813, guid: a7fd422aa0357f24d817d0b807f3edd2, type: 3}
+  impactEffect: {fileID: -743508109953688127, guid: 877b06e819b4b5d459b744278e46a46a, type: 3}
   Hurt: 10
   enemyType: type1
   explosionRadius: 0

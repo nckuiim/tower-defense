@@ -27,7 +27,9 @@ public class MoveEnemy : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        transform.position = waypoints[currentWaypoint].transform.position;
         lastWaypointSwitchTime = Time.time;
+        InvokeRepeating("ToCallSpeedRecover", 0f, 1f);
     }
     float startfight = 0;
     float endfight = 0;
@@ -37,13 +39,13 @@ public class MoveEnemy : MonoBehaviour
         if (move)
         {
             // 1 
-            Vector3 startPosition = waypoints[currentWaypoint].transform.position;
+            Vector3 startPosition = transform.position;
             Vector3 endPosition = waypoints[currentWaypoint + 1].transform.position;
             // 2 
             float pathLength = Vector3.Distance(startPosition, endPosition);
             float totalTimeForPath = pathLength / speed;
-            float currentTimeOnPath = Time.time - lastWaypointSwitchTime - (endfight - startfight);
-            gameObject.transform.position = Vector2.Lerp(startPosition, endPosition, currentTimeOnPath / totalTimeForPath);
+            //float currentTimeOnPath = Time.time - lastWaypointSwitchTime - (endfight - startfight);
+            gameObject.transform.position = Vector2.Lerp(startPosition, endPosition, Time.deltaTime / totalTimeForPath);
             // 3 
             if (gameObject.transform.position.Equals(endPosition))
             {
@@ -102,5 +104,33 @@ public class MoveEnemy : MonoBehaviour
     {
         move = true;
         endfight += Time.time;
+    }
+
+    public float DistanceToGoal()
+    {
+        float distance = 0;
+        distance += Vector2.Distance(
+            gameObject.transform.position,
+            waypoints[currentWaypoint + 1].transform.position);
+        for (int i = currentWaypoint + 1; i < waypoints.Length - 1; i++)
+        {
+            Vector3 startPosition = waypoints[i].transform.position;
+            Vector3 endPosition = waypoints[i + 1].transform.position;
+            distance += Vector2.Distance(startPosition, endPosition);
+        }
+        return distance;
+    }
+
+    public void SpeedRecover()
+    {
+        speed = maxSpeed;
+    }
+
+    public void ToCallSpeedRecover()
+    {
+        if (speed < maxSpeed)
+        {
+            Invoke("SpeedRecover", 1f);
+        }
     }
 }
